@@ -3,8 +3,7 @@ import { createRouter, createWebHistory} from 'vue-router'
 // 页面组件导入
 import Dashboard from '../views/Dashboard.vue'
 import TodoList from '../views/TodoList.vue'
-// 其他页面暂时注释，等创建后再启用
-// import Calendar from '../views/Calendar.vue'
+import Calendar from '../views/Calendar.vue'
 // import Diary from '../views/Diary.vue'
 // import DiaryEdit from '../views/DiaryEdit.vue'
 // import DiaryDetail from '../views/DiaryDetail.vue'
@@ -46,16 +45,16 @@ const routes: Array<any> = [
   //     hideInMenu: true
   //   }
   // },
-  // {
-  //   path: '/calendar',
-  //   name: 'Calendar',
-  //   component: Calendar,
-  //   meta: {
-  //     title: '日程管理',
-  //     icon: 'el-icon-calendar',
-  //     keepAlive: true
-  //   }
-  // },
+  {
+    path: '/calendar',
+    name: 'Calendar',
+    component: Calendar,
+    meta: {
+      title: '日程管理',
+      icon: 'el-icon-calendar',
+      keepAlive: true
+    }
+  },
   // 其他路由配置...
 ]
 

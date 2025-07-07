@@ -260,23 +260,71 @@ interface Schedule {
 const todaySchedules = ref<Schedule[]>([
   {
     id: '1',
-    title: '团队会议',
-    description: '讨论项目进展和下一步计划',
-    startTime: '09:00',
-    endTime: '10:30',
+    title: '晨练',
+    description: '跑步30分钟',
+    startTime: '06:00',
+    endTime: '07:00',
+    priority: 'medium',
+    category: 'health',
+    location: '公园',
+    isReminder: true,
+    status: 'pending'
+  },
+  {
+    id: '2',
+    title: '早餐',
+    description: '健康早餐',
+    startTime: '07:30',
+    endTime: '08:00',
+    priority: 'low',
+    category: 'personal',
+    location: '家',
+    isReminder: false,
+    status: 'pending'
+  },
+  {
+    id: '3',
+    title: '晨会',
+    description: '团队例会，讨论今日工作安排',
+    startTime: '08:00',
+    endTime: '09:00',
     priority: 'high',
-    category: 'meeting',
+    category: 'work',
     location: '会议室A',
     participants: ['张三', '李四', '王五'],
     isReminder: true,
     status: 'pending'
   },
   {
-    id: '2',
-    title: '客户拜访',
-    description: '产品演示和需求沟通',
+    id: '4',
+    title: '项目开发',
+    description: '前端功能开发',
+    startTime: '09:30',
+    endTime: '11:30',
+    priority: 'high',
+    category: 'work',
+    location: '办公室',
+    isReminder: false,
+    status: 'pending'
+  },
+  {
+    id: '5',
+    title: '午餐',
+    description: '和同事一起用餐',
+    startTime: '12:00',
+    endTime: '13:00',
+    priority: 'medium',
+    category: 'personal',
+    location: '餐厅',
+    isReminder: false,
+    status: 'pending'
+  },
+  {
+    id: '6',
+    title: '客户洽谈',
+    description: '产品需求讨论',
     startTime: '14:00',
-    endTime: '16:00',
+    endTime: '15:00',
     priority: 'high',
     category: 'work',
     location: '客户办公室',
@@ -285,7 +333,19 @@ const todaySchedules = ref<Schedule[]>([
     status: 'pending'
   },
   {
-    id: '3',
+    id: '7',
+    title: '下午茶',
+    description: '咖啡休息时间',
+    startTime: '15:30',
+    endTime: '16:00',
+    priority: 'low',
+    category: 'personal',
+    location: '咖啡厅',
+    isReminder: false,
+    status: 'pending'
+  },
+  {
+    id: '8',
     title: '健身',
     description: '有氧运动30分钟',
     startTime: '18:00',
@@ -297,14 +357,74 @@ const todaySchedules = ref<Schedule[]>([
     status: 'pending'
   },
   {
-    id: '4',
+    id: '9',
     title: '洗漱',
-    description: '有氧运动30分钟',
+    description: '洗澡整理',
     startTime: '18:30',
     endTime: '19:30',
     priority: 'medium',
-    category: 'health',
+    category: 'personal',
     location: '卫生间',
+    isReminder: false,
+    status: 'pending'
+  },
+  {
+    id: '10',
+    title: '晚餐',
+    description: '家庭聚餐',
+    startTime: '19:00',
+    endTime: '20:00',
+    priority: 'medium',
+    category: 'personal',
+    location: '家',
+    isReminder: false,
+    status: 'pending'
+  },
+  {
+    id: '11',
+    title: '学习时间',
+    description: '阅读专业书籍',
+    startTime: '20:30',
+    endTime: '22:00',
+    priority: 'medium',
+    category: 'study',
+    location: '书房',
+    isReminder: true,
+    status: 'pending'
+  },
+  {
+    id: '12',
+    title: '夜宵',
+    description: '简单夜宵',
+    startTime: '22:30',
+    endTime: '23:00',
+    priority: 'low',
+    category: 'personal',
+    location: '厨房',
+    isReminder: false,
+    status: 'pending'
+  },
+  {
+    id: '13',
+    title: '深夜工作',
+    description: '紧急项目处理',
+    startTime: '23:30',
+    endTime: '01:00',
+    priority: 'high',
+    category: 'work',
+    location: '家庭办公室',
+    isReminder: true,
+    status: 'pending'
+  },
+  {
+    id: '14',
+    title: '冥想',
+    description: '放松身心',
+    startTime: '01:30',
+    endTime: '02:00',
+    priority: 'low',
+    category: 'health',
+    location: '卧室',
     isReminder: false,
     status: 'pending'
   }
@@ -631,10 +751,6 @@ const showWelcomeNotification = () => {
   }
 }
 
-
-
-
-
 .chart-row {
   margin-bottom: 24px;
   
@@ -757,10 +873,6 @@ const showWelcomeNotification = () => {
         }
       }
     }
-    
-
-    
-
   }
   
   .chart-row {
