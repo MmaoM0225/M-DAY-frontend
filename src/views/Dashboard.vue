@@ -180,7 +180,6 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
-// import { useRouter } from 'vue-router'
 import { ElNotification } from 'element-plus'
 import { 
   List, 
@@ -192,6 +191,7 @@ import {
 } from '@element-plus/icons-vue'
 import ScheduleList from '../components/ScheduleList.vue'
 
+// 当router配置好后可以使用跳转
 // const router = useRouter()
 
 // 接口定义
@@ -298,13 +298,13 @@ const todaySchedules = ref<Schedule[]>([
   },
   {
     id: '4',
-    title: '健身',
+    title: '洗漱',
     description: '有氧运动30分钟',
-    startTime: '18:00',
-    endTime: '19:00',
+    startTime: '18:30',
+    endTime: '19:30',
     priority: 'medium',
     category: 'health',
-    location: '健身房',
+    location: '卫生间',
     isReminder: false,
     status: 'pending'
   }
@@ -330,12 +330,13 @@ const taskProgress = computed(() => {
 // 方法
 const goToTodos = () => {
   console.log('跳转到任务管理页面')
-  // router.push('/todos')
+  // 使用window.location进行页面跳转
+  window.location.href = '/todos'
 }
 
 const goToCalendar = () => {
   console.log('跳转到日历页面')
-  // router.push('/calendar')
+  // window.location.href = '/calendar'
 }
 
 const goToDiary = () => {
@@ -386,17 +387,25 @@ onMounted(() => {
   console.log('Dashboard mounted')
 })
 
-// 显示欢迎通知
+// 显示欢迎通知（仅第一次访问）
 const showWelcomeNotification = () => {
-  ElNotification({
-    title: '🎯 欢迎回来！',
-    message: `今天是 ${currentDate.value}，开始高效的一天吧！`,
-    type: 'success',
-    duration: 4000,
-    position: 'top-right',
-    showClose: true,
-    dangerouslyUseHTMLString: false
-  })
+  // 检查是否已经显示过欢迎消息
+  const hasShownWelcome = localStorage.getItem('hasShownWelcome')
+  
+  if (!hasShownWelcome) {
+    ElNotification({
+      title: '🎯 欢迎使用个人自律管理系统！',
+      message: `今天是 ${currentDate.value}，开始高效的一天吧！`,
+      type: 'success',
+      duration: 5000,
+      position: 'top-right',
+      showClose: true,
+      dangerouslyUseHTMLString: false
+    })
+    
+    // 标记已经显示过欢迎消息
+    localStorage.setItem('hasShownWelcome', 'true')
+  }
 }
 </script>
 

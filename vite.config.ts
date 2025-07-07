@@ -46,8 +46,8 @@ export default defineConfig({
       },
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'safari-pinned-tab.svg'],
       manifest: {
-        name: '个人自律管理系统',
-        short_name: '自律管理',
+        name: '个人管理系统',
+        short_name: '个人管理',
         description: '个人任务管理、日程安排和日记记录系统',
         theme_color: '#409eff',
         background_color: '#ffffff',

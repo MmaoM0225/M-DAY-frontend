@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useRouter, useRoute } from 'vue-router'
+import { computed } from 'vue'
 import { 
   Monitor, 
   List, 
@@ -8,12 +10,16 @@ import {
   Setting 
 } from '@element-plus/icons-vue'
 
-import Dashboard from './views/Dashboard.vue'
+const router = useRouter()
+const route = useRoute()
+
+// 当前激活的菜单项
+const activeMenu = computed(() => route.path)
 
 // 菜单选择处理
 const handleMenuSelect = (key: string) => {
   console.log('菜单选择:', key)
-  // 暂时只是打印，等router配置好后再实现跳转
+  router.push(key)
 }
 </script>
 
@@ -24,12 +30,12 @@ const handleMenuSelect = (key: string) => {
       <el-header class="app-header">
         <div class="header-content">
           <div class="logo-section">
-            <h2>🎯 个人自律管理系统</h2>
+            <h2>🎯 个人管理系统</h2>
           </div>
           <div class="nav-section">
             <el-menu
               mode="horizontal"
-              default-active="/"
+              :default-active="activeMenu"
               class="header-menu"
               @select="handleMenuSelect"
             >
@@ -63,8 +69,8 @@ const handleMenuSelect = (key: string) => {
       </el-header>
       
       <el-main class="app-main">
-        <!-- 直接显示Dashboard组件 -->
-        <Dashboard />
+        <!-- 路由视图 -->
+        <router-view />
       </el-main>
     </el-container>
   </div>
@@ -160,6 +166,12 @@ html, body {
   background: #f5f5f5;
   min-height: calc(100vh - 60px);
   overflow-x: hidden;
+  
+  // 宽屏时限制内容宽度
+  @media (min-width: 1200px) {
+    max-width: 75%;
+    margin: 0 auto;
+  }
 }
 
 // Element Plus 样式覆盖

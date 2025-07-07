@@ -8,7 +8,7 @@ import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
 // 暂时注释路由，等安装vue-router后再启用
-// import router from './router'
+import router from './router'
 
 const app = createApp(App)
 
@@ -21,6 +21,6 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 }
 
 // 暂时注释路由，等安装vue-router后再启用
-// app.use(router)
+app.use(router)
 
 app.mount('#app')
